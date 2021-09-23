@@ -1,9 +1,11 @@
 require Logger
 
-defmodule ClientPie do
+defmodule PieTap.ClientPie do
   use GenServer
 
   def start_link do
+    ip = Application.get_env :gen_tcp, :ip, {192,168,168,190}
+    port = Application.get_env :gen_tcp, :port, 6767
     GenServer.start_link(__MODULE__, :ok)
   end
 

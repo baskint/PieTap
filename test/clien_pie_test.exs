@@ -1,5 +1,6 @@
-defmodule ClientPieTest do
+defmodule ClientTest do
   use ExUnit.Case
+  alias PieTap.ClientPie
 
   test "initial name is default" do
 
