@@ -1,17 +1,16 @@
-require Logger
-
 defmodule PieTap.ClientPie do
   use GenServer
+  require Logger
 
   def start_link do
-    ip = Application.get_env :gen_tcp, :ip, {192,168,168,190}
-    port = Application.get_env :gen_tcp, :port, 6767
     GenServer.start_link(__MODULE__, :ok)
   end
 
   def init(:ok) do
     {:ok, hostname } = :inet.gethostname
     {:ok, %{name: hostname}}
+
+    port = Application.get_env :pie_tap, :port, 6767
   end
 
   def get_name(pid) do

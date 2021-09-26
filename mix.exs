@@ -1,12 +1,13 @@
-defmodule Pietap.MixProject do
+defmodule PieTap.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :pietap,
+      app: :pie_tap,
       version: "0.1.0",
       elixir: "~> 1.12",
       start_permanent: Mix.env() == :prod,
+      mod: {PieTap.Application, []},
       escript: [main_module: PieTap.ClientStart],
       deps: deps()
     ]

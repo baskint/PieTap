@@ -1,1 +1,0 @@
-config :gen_tcp, ip: {192,168,168,190}, port: 6767
