@@ -3,7 +3,7 @@ defmodule PieTap do
   alias PieTap.Handler
 
   def accept(port) do
-    {:ok, socket} = :gen_tcp.listen(port, [:binary, packet: 0, active: false, reuseaddr: true])
+    {:ok, socket} = :gen_tcp.listen(port, [:binary, active: true])
 
     Logger.info("Accepting connections on port #{port}")
     loop_acceptor(socket)

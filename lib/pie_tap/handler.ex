@@ -16,6 +16,8 @@ defmodule PieTap.Handler do
   @impl true
   def handle_info({:tcp, socket, packet}, state) do
     Logger.info("Received packet: #{inspect(packet)} and send response")
+    pie_info = %{ :name => "enver"}
+    # :gen_tcp.send(socket, pie_info)
     :gen_tcp.send(socket, "Hi from pie client \n")
     {:noreply, state}
   end
