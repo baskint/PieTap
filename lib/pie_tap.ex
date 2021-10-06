@@ -1,6 +1,11 @@
 defmodule PieTap do
   require Logger
   alias PieTap.Handler
+  alias PieTap.Application
+
+  def start do
+    Application.start(0,0)
+  end
 
   def accept(port) do
     {:ok, socket} = :gen_tcp.listen(port, [:binary, active: true])

@@ -17,6 +17,13 @@ defmodule PieTap.Handler do
   def handle_info({:tcp, socket, packet}, state) do
     Logger.info("Received packet: #{inspect(packet)} and send response")
     pie_info = %{ :name => "enver"}
+
+    if String.contains? packet, "uptime" do
+        Logger.info "uptime request received"
+        {uptime, 0} = System.cmd("uptime", ["-s"])
+        :gen_tcp.send(socket, "uptime=#{uptime}=\n")
+        {:noreply, state}
+    end
     # :gen_tcp.send(socket, pie_info)
     :gen_tcp.send(socket, "Hi from pie client \n")
     {:noreply, state}
